@@ -158,17 +158,21 @@ body > section,
 }
 
 #preloader {
-  background-color: #fff;
-  height: 100%;
-  position: fixed;
-  width: 100%;
-  z-index: 1100;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 1100;
+    background-color: royalblue;
 }
 
 #preloader > img {
-  left: 47%;
-  position: absolute;
-  top: 48%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 30px;
+    width: 200px;
+    margin: auto;
 }
 
 
