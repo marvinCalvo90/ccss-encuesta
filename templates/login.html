@@ -39,9 +39,235 @@
     <!-- Modernizer Script for old Browsers -->
     <script src="../js/modernizr-2.6.2.min.js"></script>
 
+    <style>
+        .nav-tabs { border-bottom: 2px solid #DDD; }
+        .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover { border-width: 0; }
+        .nav-tabs > li > a { border: none; color: #666; }
+        .nav-tabs > li.active > a, .nav-tabs > li > a:hover { border: none; color: #4285F4 !important; background: transparent; }
+        .nav-tabs > li > a::after { content: ""; background: #4285F4; height: 2px; position: absolute; width: 100%; left: 0px; bottom: -1px; transition: all 250ms ease 0s; transform: scale(0); }
+        .nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after { transform: scale(1); }
+        .tab-nav > li > a::after { background: #21527d none repeat scroll 0% 0%; color: #fff; }
+        .tab-pane { padding: 15px 0; }
+        .tab-content{padding:20px}
+
+        .card {background: #FFF none repeat scroll 0% 0%; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3); }
+        body{ background: #EDECEC; padding: 20px}
+
+        body{background: #eee url(../img/ancianos-blur.jpg) center fixed no-repeat; background-size: cover }
+        html,body{
+            position: relative;
+            height: 100%;
+        }
+
+        .login-container{
+            position: relative;
+            width: 300px;
+            margin: 80px auto;
+            padding: 20px 40px 40px;
+            text-align: center;
+            background: #fff;
+            border: 1px solid #ccc;
+        }
+
+        #output{
+            position: absolute;
+            width: 300px;
+            top: -75px;
+            left: 0;
+            color: #fff;
+        }
+
+        #output.alert-success{
+            background: rgb(25, 204, 25);
+        }
+
+        #output.alert-danger{
+            background: rgb(228, 105, 105);
+        }
+
+
+        .login-container::before,.login-container::after{
+            content: "";
+            position: absolute;
+            width: 100%;height: 100%;
+            top: 3.5px;left: 0;
+            background: #fff;
+            z-index: -1;
+            -webkit-transform: rotateZ(4deg);
+            -moz-transform: rotateZ(4deg);
+            -ms-transform: rotateZ(4deg);
+            border: 1px solid #ccc;
+
+        }
+
+        .login-container::after{
+            top: 5px;
+            z-index: -2;
+            -webkit-transform: rotateZ(-2deg);
+            -moz-transform: rotateZ(-2deg);
+            -ms-transform: rotateZ(-2deg);
+
+        }
+
+        .avatar{
+            width: 100px;height: 100px;
+            margin: 10px auto 30px;
+            border-radius: 100%;
+            border: 2px solid #aaa;
+            background-size: cover;
+        }
+
+        .form-box input{
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            height:40px;
+            border: 1px solid #ccc;;
+            background: #fafafa;
+            transition:0.2s ease-in-out;
+
+        }
+
+        .form-box input:focus{
+            outline: 0;
+            background: #eee;
+        }
+
+        .form-box input[type="text"]{
+            border-radius: 5px 5px 0 0;
+            text-transform: lowercase;
+        }
+
+        .form-box input[type="password"]{
+            border-radius: 0 0 5px 5px;
+            border-top: 0;
+        }
+
+        .form-box button.login{
+            margin-top:15px;
+            padding: 10px 20px;
+        }
+
+        .animated {
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+        }
+
+        @-webkit-keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                -webkit-transform: translateY(20px);
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                -webkit-transform: translateY(20px);
+                -ms-transform: translateY(20px);
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                -webkit-transform: translateY(0);
+                -ms-transform: translateY(0);
+                transform: translateY(0);
+            }
+        }
+
+        .fadeInUp {
+            -webkit-animation-name: fadeInUp;
+            animation-name: fadeInUp;
+        }
+
+        /*
+/* Created by Filipe Pina
+ * Specific styles of signin, register, component
+ */
+        /*
+         * General styles
+         */
+
+        body, html{
+            height: 100%;
+            background-repeat: no-repeat;
+            background-color: #d3d3d3;
+            font-family: 'Oxygen', sans-serif;
+        }
+
+        .main{
+            margin-top: 70px;
+        }
+
+        h1.title {
+            font-size: 50px;
+            font-family: 'Passion One', cursive;
+            font-weight: 400;
+        }
+
+        hr{
+            width: 10%;
+            color: #fff;
+        }
+
+        .form-group{
+            margin-bottom: 15px;
+        }
+
+        label{
+            margin-bottom: 15px;
+        }
+
+        input,
+        input::-webkit-input-placeholder {
+            font-size: 11px;
+            padding-top: 3px;
+        }
+
+        .main-login{
+            background-color: #fff;
+            /* shadows and rounded borders */
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            border-radius: 2px;
+            -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+
+        }
+
+        .main-center{
+            margin-top: 30px;
+            margin: 0 auto;
+            max-width: 330px;
+            padding: 40px 40px;
+
+        }
+
+        .login-button{
+            margin-top: 5px;
+        }
+
+        .login-register{
+            font-size: 11px;
+            text-align: center;
+        }
+
+
+    </style>
 </head>
 
-<body id="body">
+<body id="body" onload="setInterval('checkAdviceInput()', 500);">
 
 <!-- preloader -->
 <div id="preloader">
@@ -49,214 +275,104 @@
 </div>
 <!-- end preloader -->
 
-<!--
-Fixed Navigation
-==================================== -->
-<header id="navigation" class="navbar-fixed-top navbar">
-    <div class="container">
-        <div class="navbar-header">
-            <!-- responsive nav button -->
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <i class="fa fa-bars fa-2x"></i>
-            </button>
-            <!-- /responsive nav button -->
+<div class="container" style="opacity: 0.8;">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-md-12" style="">
+            <!-- Nav tabs -->
+            <div class="card">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Login</a></li>
+                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Registrarse</a></li>
+                </ul>
 
-            <!-- logo -->
-            <a class="navbar-brand" href="#body">
-                <h1 id="logo">
-                    <img src="../img/logo.png" alt="Brandi">
-                </h1>
-            </a>
-            <!-- /logo -->
-        </div>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="home">
 
-        <!-- main nav -->
-        <nav class="collapse navbar-collapse navbar-right" role="navigation">
-            <ul id="nav" class="nav navbar-nav">
-                <li class="current"><a href="#body">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#works">Work</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="http://google.com">Contact</a></li>
-            </ul>
-        </nav>
-        <!-- /main nav -->
-
-    </div>
-</header>
-<!--
-End Fixed Navigation
-==================================== -->
-
-<!-- ====================================
-Multiple-Animated Slider
--->
-    <div class="container">
-
-        <div id="tabs-home" class="row slider" style="background:url(http://legalprom.cl/wp-content/uploads/2014/05/main-bg.jpg) no-repeat center fixed;">
-            <div class="col-sm-3">
-                <nav class="nav-sidebar">
-                    <ul class="nav tabs">
-                        <li class="active"><a href="#tab1" data-toggle="tab"><p>CREACION EMPRESAS</p><span>Constitución de Sociedades</span></a></li>
-                        <li class=""><a href="#tab2" data-toggle="tab"><p>MARCAS</p><span>Registro y Renovación</span></a></li>
-                        <li class=""><a href="#tab3" data-toggle="tab"><p>MODIFICACION</p><span>Disolucion Sociedades</span></a></li>
-                        <li class=""><a href="#tab4" data-toggle="tab"><p>¿BUSCA UN ABOGADO?</p><span>Laboral-Bienes Raices-Litigios-Contratos</span></a></li>
-                    </ul>
-                </nav>
-            </div>
-            <!-- tab content -->
-            <div id="wea" class="col-sm-9 tab-content">
-
-                <div class="tab-pane active text-style fade in active" id="tab1">
-                    <h2>Su Sociedad Bien Hecha Online</h2>
-                    <p>Libérese de malos ratos con nuestra garantía de aprobación bancaria de sus estatutos</p>
-                    <p><strong>Desde $74.990 y 24 hrs.</strong></p>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Seleccione Sociedad para comenzar:</h3>
+                        <div id="login" class="login-container">
+                            <div id="output"></div>
+                            <div class="avatar"></div>
+                            <div class="form-box">
+                                <form action="" method="">
+                                    <input name="user" type="text" placeholder="username">
+                                    <input type="password" placeholder="password">
+                                    <button class="btn btn-info btn-block login" type="submit">Login</button>
+                                </form>
+                            </div>
                         </div>
-                        <div class="panel-body">
-                            <form action="/forms/login" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="ve6XAejZc30dRt9YPpgeHfj7z95M0d8dI9dVZtndr9IhXOt4/mF1WjyPwlScpgyCh4bkLKNzfyt5naNaG837Rw==">
-                                <div class="row form-group">
-                                    <div class="col-md-2">
-                                        <img src="http://legalprom.cl/wp-content/uploads/2014/05/eirl70.jpg"data-toggle="tooltip" data-original-title="Sociedad EIRL">
-                                        <input type="checkbox" name="doc_type[cod][]" class="hidden" value="society_eirl">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <img src="http://legalprom.cl/wp-content/uploads/2014/05/sa70.jpg"data-toggle="tooltip" data-original-title="Sociedad SA">
-                                        <input type="checkbox" name="doc_type[cod][]" class="hidden" value="society_sa">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <img src="http://legalprom.cl/wp-content/uploads/2014/05/srl70.jpg"data-toggle="tooltip" data-original-title="Sociedad SRL">
-                                        <input type="checkbox" name="doc_type[cod][]" class="hidden" value="society_srl">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <img src="http://legalprom.cl/wp-content/uploads/2014/05/spa70.jpg"data-toggle="tooltip" data-original-title="Sociedad SpA">
-                                        <input type="checkbox" name="doc_type[cod][]" class="hidden" value="society_spa">
-                                    </div>
-                                </div>
 
-                                <div class="form-group">
-                                    <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="Nombre">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Apellido">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name="email" id="email" class="form-control input-sm" placeholder="Email">
-                                </div>
-                                <input type="submit" name="commit" value="Crear mi empresa" class="btn btn-info btn-block">
 
-                            </form>
-                        </div>
                     </div>
-                </div>
-
-                <div class="tab-pane text-style fade" id="tab2">
-                    <h2>Proteja su Marca Online</h2>
-                    <p>Evite que otros aprovechen su esfuerzo y buen nombre registrando su marca con LegalProm</p>
-                    <p><strong>Desde $129.990</strong></p>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Seleccione Sociedad para comenzar:</h3>
-                        </div>
-                        <div class="panel-body">
-                            <form action="/forms/login" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="ve6XAejZc30dRt9YPpgeHfj7z95M0d8dI9dVZtndr9IhXOt4/mF1WjyPwlScpgyCh4bkLKNzfyt5naNaG837Rw==">
-                                <div class="row form-group">
-                                    <div class="col-md-2">
-                                        <img src="http://legalprom.cl/wp-content/uploads/2014/02/establecimiento-comercial.jpg" class="img-responsive img-radio" width="50" data-toggle="tooltip" title="" data-original-title="Marca Establecimiento Comercial">
-                                        <input type="checkbox" name="doc_type[cod][]" class="hidden" value="brand_mec">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <img src="http://legalprom.cl/wp-content/uploads/2014/02/servicio.jpg" class="img-responsive img-radio" width="50" data-toggle="tooltip" title="" data-original-title="Marca Servicio">
-                                        <input type="checkbox" name="doc_type[cod][]" class="hidden" value="brand_ms">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <img src="http://legalprom.cl/wp-content/uploads/2014/02/producto.jpg" class="img-responsive img-radio" width="50" data-toggle="tooltip" title="" data-original-title="Marca Producto">
-                                        <input type="checkbox" name="doc_type[cod][]" class="hidden" value="brand_mp">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <img src="http://legalprom.cl/wp-content/uploads/2014/02/establecimiento-industrial.jpg" class="img-responsive img-radio" width="50" data-toggle="tooltip" title="" data-original-title="Marca Establecimiento Industrial">
-                                        <input type="checkbox" name="doc_type[cod][]" class="hidden" value="brand_mei">
+                    <div role="tabpanel" class="tab-pane" id="profile">
+                            <div class="row main">
+                                <div class="panel-heading">
+                                    <div class="panel-title text-center">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="Nombre">
+                                <div class="main-login main-center" style="margin-top: -80px">
+                                    <form class="form-horizontal" method="post" action="#">
+
+                                        <div class="form-group">
+                                            <label for="name" class="cols-sm-2 control-label">Your Name</label>
+                                            <div class="cols-sm-10">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="email" class="cols-sm-2 control-label">Your Email</label>
+                                            <div class="cols-sm-10">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="username" class="cols-sm-2 control-label">Username</label>
+                                            <div class="cols-sm-10">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control" name="username" id="username"  placeholder="Enter your Username"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="password" class="cols-sm-2 control-label">Password</label>
+                                            <div class="cols-sm-10">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                                    <input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group ">
+                                            <button type="button" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+                                        </div>
+                                        <div class="login-register">
+                                            <a href="index.php">Login</a>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Apellido">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name="email" id="email" class="form-control input-sm" placeholder="Email">
-                                </div>
-                                <input type="submit" name="commit" value="Crear mi empresa" class="btn btn-info btn-block">
-
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tab-pane text-style fade" id="tab3">
-                    <h2>Modificación y Disolución Sociedades</h2>
-                    <p>Concrete oportunidades adaptando sus negocios con velocidad y seguridad LegalProm</p>
-                    <p><strong>Desde $44.990 y 24 hrs.</strong></p>
-                    <a href="#">Detalle Precio y Plazos</a>
-                </div>
-
-                <div class="tab-pane text-style fade" id="tab4">
-                    <h2>¿Busca un Abogado en Quien Confiar?</h2>
-                    <p>Miles de clientes han confiado en LegalProm. Muchos huyendo de malos servicios, perdidas de tiempo y dinero.</p>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="row press-quotes">
-            <div class="col-md-4">
-                <center><img class="press-logos" alt="Logo CNN Chile" src="http://legalprom.cl/wp-content/uploads/2013/12/logo-cnnchile.png"/></center>
-                <div class="row">
-                    <div class="col-md-2">
-                        <img class="alignleft size-full wp-image-361" src="http://legalprom.cl/wp-content/uploads/2014/01/comillas.png" alt="comillas" width="24" height="20">
-                    </div>
-                    <div class="col-md-10">
-                        <p>Un gran avance en el proceso de crear nuevas empresas</p>
+                            </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <center><img class="press-logos" style="margin-bottom:35px;" alt="Logo Las Últimas Noticias" src="http://legalprom.cl/wp-content/uploads/2014/01/logo-lun2.png"/></center>
-                <div class="row">
-                    <div class="col-md-2">
-                        <img class="alignleft size-full wp-image-361" src="http://legalprom.cl/wp-content/uploads/2014/01/comillas.png" alt="comillas" width="24" height="20">
-                    </div>
-                    <div class="col-md-10">
-                        <p>Chao a los trámites para armar una sociedad</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <center><img class="press-logos" alt="Logo Innovacion.cl" src="http://legalprom.cl/wp-content/uploads/2013/12/logo-innovacion1.png"/></center>
-                <div class="row">
-                    <div class="col-md-2">
-                        <img class="alignleft size-full wp-image-361" src="http://legalprom.cl/wp-content/uploads/2014/01/comillas.png" alt="comillas" width="24" height="20">
-                    </div>
-                    <div class="col-md-10">
-                        <p>El sueño del emprendimiento fácil, rápido y a bajo costo</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="line">
-            <hr/>
         </div>
     </div>
+</div>
 
-<!-- ====================================
-Multiple-Animated Slider
--->
+    <!-- End Carousel -->
+</div>
 
+
+<!--
 <footer id="footer" class="footer">
     <div class="container">
         <div class="row">
@@ -313,7 +429,7 @@ Multiple-Animated Slider
         </div>
     </div>
 </footer>
-
+-->
 <a href="javascript:void(0);" id="back-top"><i class="fa fa-angle-up fa-3x"></i></a>
 
 <!-- Essential jQuery Plugins
@@ -358,6 +474,63 @@ Multiple-Animated Slider
 <script src="../js/custom.js"></script>
 
 <script type="text/javascript">
+
+
+    function checkAdviceInput(){
+        if($( window ).width() > 500){
+            setScreenMode();
+        }else{
+            setPhoneMode();
+        }
+    }
+
+    function setPhoneMode(){
+        $('#login').removeClass('login-container');
+    }
+    function setScreenMode(){
+        $('#login').addClass('login-container');
+    }
+
+    $(function(){
+        var textfield = $("input[name=user]");
+        $('button[type="submit"]').click(function(e) {
+            e.preventDefault();
+            //little validation just to check username
+            if (textfield.val() != "") {
+                //$("body").scrollTo("#output");
+                $("#output").addClass("alert alert-success animated fadeInUp").html("Welcome back " + "<span style='text-transform:uppercase'>" + textfield.val() + "</span>");
+                $("#output").removeClass(' alert-danger');
+                $("input").css({
+                    "height":"0",
+                    "padding":"0",
+                    "margin":"0",
+                    "opacity":"0"
+                });
+                //change button text
+                $('button[type="submit"]').html("continue")
+                    .removeClass("btn-info")
+                    .addClass("btn-default").click(function(){
+                    $("input").css({
+                        "height":"auto",
+                        "padding":"10px",
+                        "opacity":"1"
+                    }).val("");
+                });
+
+                //show avatar
+                $(".avatar").css({
+                    "background-image": "url('https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRL1uzmgyrfPwUC7UwnOFHFtkAhQrAUYufbLzWvOt9N8pRt1zlV')"
+                });
+            } else {
+                //remove success mesage replaced with error message
+                $("#output").removeClass(' alert alert-success');
+                $("#output").addClass("alert alert-danger animated fadeInUp").html("Disculpa, ingresa un nombre valido! ");
+            }
+            //console.log(textfield.val());
+
+        });
+    });
+
     $(function(){
         /* ========================================================================= */
         /*	Contact Form
