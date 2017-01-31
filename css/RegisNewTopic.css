@@ -100,9 +100,10 @@ span.round-tab:hover {
     padding: 0;
 }
 
-    .wizard .nav-tabs > li a:hover {
-        background: transparent;
-    }
+.wizard .nav-tabs > li a:hover {
+        
+    background: transparent;
+}
 
 .wizard .tab-pane {
     position: relative;
