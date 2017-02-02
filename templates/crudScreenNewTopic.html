@@ -47,20 +47,12 @@
         <link rel="stylesheet" href="../css/main.css">
 		
 		<!-- Modernizer Script for old Browsers -->
-	<script src="../js/modernizr.custom.js"></script>
-        <script src="../js/modernizr-2.6.2.min.js"></script>
  		<script src="../js/jquery-1.11.1.min.js"></script>
+		<script src="../js/modernizr.custom.js"></script>
+        <script src="../js/modernizr-2.6.2.min.js"></script>
    		<script src="../js/angular.min.js"></script>
     	<script src="../angular/appController.js"></script>
 
-        
-        <!--alert-->
-      	<script src="/path/to/jquery.js" type="text/javascript"></script>
-		<script src="/path/to/jquery.ui.draggable.js" type="text/javascript"></script>
-
-		<script src="/path/to/jquery.alerts.js" type="text/javascript"></script>
-		<link href="/path/to/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
-		
 	</head>
 	
     <body id="body" ng-controller="mainCtrl">
@@ -111,60 +103,44 @@
         End Fixed Navigation
         ==================================== -->
 		
-		
-		
-        <!--
-        Home Slider
-        ==================================== -->
-		<section class="row">
-	
-
-	      	<div class=" container ">
-				<ul id="cbp-ntaccordion" class="cbp-ntaccordion" >
-					<li ng-repeat="topic in topics">
-						<h3 class="cbp-nttrigger">{{ topic.name }}</h3>
+		<div class="panel-group" id="accordion">
+		  <div ng-repeat="topic in topics" class="panel panel-default">
+		    <div class="panel-heading cbp-ntaccordion">
+		      <h4 class="panel-title">
+		        <a class="cbp-nttrigger" data-toggle="collapse" data-parent="#accordion" href="#{{topic.id}}">
+		        {{topic.name}}</a>
+		      </h4>
+		    </div>
+		    <div id="{{topic.id}}" class="panel-collapse collapse">
+		      <div class="panel-body">
+		      	Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+				<div class="panel-group" id="{{topic.id_container}}">
+				  <div class="panel panel-default" ng-repeat="question in topic.questions">
+				    <div class="panel-heading">
+				      <h4 class="panel-title">
+				        <a data-toggle="collapse" data-parent="#{{topic.id_container}}" href="#{{question.id}}">
+				        {{question.title}}</a>
+				      </h4>
+				    </div>
+				    <div id="{{question.id}}" class="panel-collapse collapse">
+				      <div class="panel-body">
 						<div class="cbp-ntcontent">
-							
-							<ul class="cbp-ntsubaccordion">
-
-								<li ng-repeat=" question in topic.questions">
-
-									<h4 class="cbp-nttrigger">{{question.title}}</h4>
-									<div class="cbp-ntcontent">
-
-										<form action="" id="formulario" >
-
-											
-												
-
-												<label for="" class="lbel" ng-repeat=" answer in question.answers">{{ question.options[$index]}}<input type="text"  value="{{ question.answers[$index]}}" class="inputTextResp"></label >
-												
-												
-
-												
-												
-											</div>
-											
-										</form>
-									</div>
-
-								</li>
-	
-							</ul>
+							<label class="lbel" ng-repeat=" answer in question.answers">{{ question.options[$index]}}<input type="text" value="{{ question.answers[$index]}}" class="inputTextResp"></label>
 						</div>
-					</li>
-					
-			
-			
-				</ul>
-			</div>
-	 
-		</section>
-		
-        <!--
-        End Home SliderEnd
-        ==================================== -->
-		
+				      </div>
+				    </div>
+				  </div>
+				</div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+
+
+
+
+
 		<footer id="footer" class=" row  footer ">
 			<div class="container">
 		
