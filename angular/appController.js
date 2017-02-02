@@ -3,36 +3,81 @@
  */
 angular.module('CCSSapp', []).controller('mainCtrl', function($scope) {
 
-    $scope.topics = [
+    $scope.topics = 
+    [
         {
             name: 'GERIATRIA',
-            questions: ['QUE ES GERIATRIA', 'QUE ES OTRA VARA'],
-            answers: [1, 3]
+            questions: 
+            [
+                {
+                    title:'DONDE VIVES',
+                    answers:['GUNACASTE','LIMON','HEREDIA','GRECIA'],
+                    options:['A','B','C','D'],
+                    correctAnswer:3
+                },
+                {
+                    title:'COMO ES EL MUNDO',
+                    answers:['LINDO','LOCO','VERDE','TRISTE'],
+                    correctAnswer:3
+                },
+                {
+                    title:'COMO ERES TU',
+                    answers:['Es esto','Es quello','Es Amor','Es Ciencia'],
+                    options:['A','B','C','D'],
+                    correctAnswer:3
+                }
+            ]
+            
         },
         {
-            name: 'TERAPIA RESPIRATORIA',
-            questions: ['QUE ES TERAPIA', 'QUE ES OTRA VARA'],
-            answers: [1, 2]
-        },
-        {
-            name: 'OASHDAS',
-            questions: ['QUE ESAKLJASLKDAKLS', 'QUE ES OTRA VARA'],
-            answers: [1, 2]
+            name: 'GERONTOLOGIA',
+            questions: 
+            [
+                {
+                    title:'QUE ES GEREATRIA',
+                    answers:['Cuando','DONDE','PORQUE','Es Ciencia'],
+                    options:['A','B','C','D'],
+                    correctAnswer:3
+                },
+                {
+                    title:'QUE ES NATURALEZA',
+                    answers:['Es esto','Es quello','Es Amor','Es Ciencia'],
+                    correctAnswer:3
+                },
+                {
+                    title:'QUE ES  AGUA',
+                    answers:['LIQUIDO','H2O','Es Amor','REFRESCANTE'],
+                    options:['A','B','C','D'],
+                    correctAnswer:3
+                }
+            ]
+            
         },
         {
             name: 'GERIATRIA',
-            questions: ['QUE ES GERIATRIA', 'QUE ES OTRA VARA'],
-            answers: [1, 3]
+            questions: 
+            [
+                {
+                    title:'DONDE VIVES',
+                    answers:['GUNACASTE','LIMON','HEREDIA','GRECIA'],
+                    options:['A','B','C','D'],
+                    correctAnswer:3
+                },
+                {
+                    title:'COMO ES EL MUNDO',
+                    answers:['LINDO','LOCO','VERDE','TRISTE'],
+                    correctAnswer:3
+                },
+                {
+                    title:'COMO ERES TU',
+                    answers:['Es esto','Es quello','Es Amor','Es Ciencia'],
+                    options:['A','B','C','D'],
+                    correctAnswer:3
+                }
+            ]
+            
         },
-        {
-            name: 'TERAPIA RESPIRATORIA',
-            questions: ['QUE ES TERAPIA', 'QUE ES OTRA VARA'],
-            answers: [1, 2]
-        },
-        {
-            name: 'OASHDAS',
-            questions: ['QUE ESAKLJASLKDAKLS', 'QUE ES OTRA VARA'],
-            answers: [1, 2]
-        }
+       
     ];
+
 });
